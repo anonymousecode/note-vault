@@ -32,9 +32,19 @@
 <body class=" d-flex align-items-center justify-content-center vh-100" >
 
   <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
-    <h4 class="text-center mb-2">Login</h4>
+    <h4 class="text-center mb-2">Register</h4>
     <form action="" method="POST">
       @csrf
+      <div class="mb-3 ">
+        <label for="name" class="form-label">Name</label>
+        <input 
+          type="text" 
+          class="form-control input-bg" 
+          id="name" 
+          name="enamemail" 
+          placeholder="Enter your name" 
+          required>
+      </div>
       <div class="mb-3 ">
         <label for="email" class="form-label">Email</label>
         <input 
@@ -55,12 +65,22 @@
           placeholder="Enter your password" 
           required>
       </div>
+      <div class="mb-3">
+        <label for="confirm-password" class="form-label">Confirm Password</label>
+        <input 
+          type="password" 
+          class="form-control input-bg" 
+          id="confirm-password" 
+          name="confirm-password" 
+          placeholder="Enter your password" 
+          required>
+      </div>
       <div class="d-grid">
-        <button type="submit" class="btn text-white " style="background:green;">Login</button>
+        <button type="submit" class="btn text-white " style="background:green;">Register</button>
       </div>
     </form>
     <div class="text-center mt-3">
-      <p class="mb-0">Don't have an account? <a href="/register" class="link">Register</a></p>
+      <p class="mb-0">Already have an account? <a href="/" class="link">Login</a></p>
   </div>
 
 </body>
