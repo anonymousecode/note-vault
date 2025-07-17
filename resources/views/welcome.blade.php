@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Note Vault</title>
+  <title>Login</title>
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -29,11 +29,11 @@
   </style>
 </head>
 
-<body class=" d-flex align-items-center justify-content-center vh-100" >
+<body class=" d-flex align-items-center justify-content-center vh-100 px-3" >
 
   <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
     <h4 class="text-center mb-2">Login</h4>
-    <form action="" method="POST">
+    <form action="{{route('login')}}" method="POST">
       @csrf
       <div class="mb-3 ">
         <label for="email" class="form-label">Email</label>
@@ -63,5 +63,10 @@
       <p class="mb-0">Don't have an account? <a href="/register" class="link">Register</a></p>
   </div>
 
+    @if (session('fail'))
+        <script>
+            alert('{{session('fail')}}')
+        </script>
+    @endif
 </body>
 </html>
