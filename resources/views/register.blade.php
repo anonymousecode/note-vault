@@ -29,11 +29,11 @@
   </style>
 </head>
 
-<body class=" d-flex align-items-center justify-content-center vh-100" >
+<body class=" d-flex align-items-center justify-content-center vh-100 px-3" >
 
   <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
     <h4 class="text-center mb-2">Register</h4>
-    <form action="" method="POST">
+    <form action="{{route('register')}}" method="POST">
       @csrf
       <div class="mb-3 ">
         <label for="name" class="form-label">Name</label>
@@ -41,7 +41,7 @@
           type="text" 
           class="form-control input-bg" 
           id="name" 
-          name="enamemail" 
+          name="name" 
           placeholder="Enter your name" 
           required>
       </div>
