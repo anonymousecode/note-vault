@@ -40,7 +40,12 @@
                 <ul class="dropdown-menu dropdown-menu-end text-small text-center" aria-labelledby="profileDropdown">
                     <li><a class="dropdown-item " href="#">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <li>
+                            <button type="submit" class="dropdown-item text-danger">Logout</button>
+                        </li>
+                    </form>
                 </ul>
             </div>
 

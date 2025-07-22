@@ -34,4 +34,10 @@ class AuthController extends Controller
             return back()->with('fail', 'Invalid credentials, try again');
         }
     }
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect('/')->with('success', 'Logged out successfully!');
+    }
 }
