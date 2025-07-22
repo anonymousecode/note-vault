@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use MongoDB\Laravel\Eloquent\Model; // Base model for MongoDB
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use MongoDB\Laravel\Auth\User as Authenticatable; // MongoDB user authentication
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Model implements Authenticatable
+class User extends Authenticatable
 {
-    use HasFactory, Notifiable, AuthenticatableTrait;
+    use HasFactory, Notifiable;
 
     protected $connection = 'mongodb';
     protected $collection = 'users';
