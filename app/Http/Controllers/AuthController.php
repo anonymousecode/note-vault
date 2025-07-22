@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     function register(Request $request)
     {
-        User::Create([
+        User::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>bcrypt($request->password)
@@ -24,9 +24,9 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if ($user && hash::check($request->password, $user->password)){
+        if ($user && Hash::check($request->password, $user->password)){
             
-            Auth() ->login($user);
+            Auth::login($user);
             return redirect('/dashboard')->with('success', 'Login successful!');
         }
         else{
