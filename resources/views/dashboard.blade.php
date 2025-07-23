@@ -25,12 +25,15 @@
                     </div>
 
                      
-                    @foreach($notes->take(19) as $note)
+                    @foreach($notes->take(14) as $note)
                         <div class="col">
-                            <div class="card h-100 shadow-sm border-success">
+                            <div class="card h-100 shadow-sm border-success"
+                            style="cursor: pointer;"
+                            data-bs-toggle="modal"
+                            data-bs-target="#noteModal{{ $note->id }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $note->title }}</h5>
-                                    <p class="card-text">{{ $note->content }}</p>
+                                    <p class="card-text">{{ substr($note->content,0,30) }}</p>
                                 </div>
                                 <div class="card-footer text-muted text-end">
                                     <small>
@@ -40,6 +43,12 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                
+                <!-- Display pagination controls -->
+                 
+                <div class="mt-4">
+                    {{ $notes->links() }}
                 </div>
 
                 <!-- Add Note Modal -->
@@ -70,6 +79,31 @@
                         </form>
                     </div>
                 </div>
+
+                @foreach($notes as $note)
+                <div class="modal fade" id="noteModal{{ $note->id }}" tabindex="-1" aria-labelledby="noteModalLabel{{ $note->id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="noteModalLabel{{ $note->id }}">{{ $note->title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body" style="white-space: pre-line; word-break: break-word; overflow-wrap: break-word; max-height:350px; overflow-y:auto;">
+                                <p>{{ $note->content }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <span class="text-muted">{{ $note->created_at?->format('d M Y, H:i') }}</span>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Optionally: Edit/Delete buttons here -->
+                                <form action="{{ route('delete', $note->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
 
             </div>
         </slot>

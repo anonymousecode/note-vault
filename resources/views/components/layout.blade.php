@@ -38,7 +38,7 @@
                     <img src="{{ asset('images/profile.png') }}" width="32" height="32" class="rounded-circle" alt="Profile">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end text-small text-center" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item " href="#">Profile</a></li>
+                    <li><a class="dropdown-item " href="{{route('changepass')}}">Change Password</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
@@ -52,15 +52,13 @@
         </div>
     </nav>
 
-
-
     <div class="container">
         {{ $slot }}
     </div>
 
     <div class="footer">
         <footer class="text-center mt-5">
-            <p class="text-muted fixed-bottom">&copy; {{ date('Y') }} Note Vault. All rights reserved.</p>
+            <p class="text-muted fixed-bottom">&copy; {{ date('Y') }} NoteVault. All rights reserved.</p>
         </footer>
     </div>
     
