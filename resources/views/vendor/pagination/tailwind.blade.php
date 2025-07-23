@@ -7,14 +7,14 @@
             </li>
         @else
             <li class="page-item">
-                <a class="page-link" href="{{ $paginator->previousPageUrl() }}">Previous</a>
+                <a class="page-link text-success" href="{{ $paginator->previousPageUrl() }}">Previous</a>
             </li>
         @endif
 
         {{-- Next Page --}}
         @if ($paginator->hasMorePages())
             <li class="page-item">
-                <a class="page-link" href="{{ $paginator->nextPageUrl() }}">Next</a>
+                <a class="page-link text-success" href="{{ $paginator->nextPageUrl() }}">Next</a>
             </li>
         @else
             <li class="page-item disabled">
