@@ -55,6 +55,26 @@
           placeholder="Enter your email" 
           required>
       </div>
+      <div class="mb-3 ">
+        <label for="security" class="form-label">Security Question</label>
+        <select name="security" id="security" class="form-control input-bg" >
+          <option value="power"> Your ideal superpower?</option>
+          <option value="animal">If you were an animal, what would you be?</option>
+          <option value="history">Which historical figure would you dine with?</option>
+          <option value="fiction">Your preferred fictional world to live in?</option>
+          <option value="song">Your personal theme song?</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="answer" class="form-label">Answer</label>
+        <input 
+          type="text" 
+          class="form-control input-bg" 
+          id="answer" 
+          name="answer" 
+          placeholder="Enter your answer" 
+          required>
+      </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input 

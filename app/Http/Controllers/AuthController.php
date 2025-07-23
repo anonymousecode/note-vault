@@ -14,6 +14,8 @@ class AuthController extends Controller
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
+            'security'=>$request->security,
+            'answer'=>$request->answer,
             'password'=>bcrypt($request->password)
         ]);
 
@@ -32,6 +34,48 @@ class AuthController extends Controller
         else{
 
             return back()->with('fail', 'Invalid credentials, try again');
+        }
+    }
+
+    function changePassword(Request $request){
+
+        $user = Auth::user();
+
+        if (Hash::check($request->current,$user->password)){
+            if($request->new === $request->confirm){
+
+                $user->password = bcrypt($request->new);
+                $user->save();
+                return redirect('/')->with('success', 'Password changed successfully!');
+            }
+            else{
+                return back()->with('fail', 'New password and confirmation do not match.');
+            }       
+        }
+        else{
+            return back()->with('fail', 'Current password is incorrect.');
+        }
+
+    }
+
+    function resetPassword(Request $request){
+
+        $user = User::where('email', $request->email)->first();
+
+        if($user && $user->security === $request->security && $user->answer === $request->answer){
+
+            if($request->new === $request->confirm){
+
+                $user->password = bcrypt($request->new);
+                $user->save();
+                return redirect('/')->with('success', 'Password reset successfully!');
+            }
+            else{
+                return back()->with('fail', 'New password and confirmation do not match.');
+            }
+        }
+        else{
+            return back()->with('fail', 'Invalid security question or answer.');
         }
     }
 

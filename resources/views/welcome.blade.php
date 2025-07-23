@@ -60,8 +60,9 @@
       </div>
     </form>
     <div class="text-center mt-3">
+      <p class="mb-0 "> <a href="{{route('reset')}}" class="link text-danger">Forgot password?</a></p>
       <p class="mb-0">Don't have an account? <a href="/register" class="link">Register</a></p>
-  </div>
+    </div>
 
     @if (session('fail'))
         <script>
