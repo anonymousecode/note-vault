@@ -12,7 +12,7 @@ class NotesController extends Controller
     function fetchNotes()
     {
         $email = Auth()->user()->email;
-        $notes = Note::where('email',$email)->paginate(14);
+        $notes = Note::where('email',$email)->orderBy('created_at','desc')->paginate(14);
 
         return view('dashboard', ['notes' => $notes]);
     }
